@@ -1,0 +1,34 @@
+{
+    "Lists":[
+        {
+            "id":1,
+            "name":"chores",
+            "color":"green",
+            "items":["take out trash", "do dishes"]
+        },
+        {
+            "id":2,
+            "name":"school",
+            "color":"red",
+            "items":["study for code challenge", "catch up on labs"]
+        },
+        {
+            "id":3,
+            "name":"work",
+            "color":"pink",
+            "items":["be to work on time", "take lunch at 12", "clock out before leaving"]
+        },
+        {
+            "id":4,
+            "name":"personal growth",
+            "color":"grey",
+            "items":["read 12 rules for life by Jordan Peterson", "meditate for 30 min everyday", "stretch for 10 min"]
+        },
+        {
+            "id":5,
+            "name":"workout",
+            "color":"yellow",
+            "items":["run 1 mile", "50 push ups", "5 min heavy bag round", "20 speed kicks on each leg", "3 sets"]
+        }
+    ]
+}
