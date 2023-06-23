@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main-container">
+        <h1>To Do App</h1>
+        <div id="toDo-columns">
+            <div id="toDoLists">
+                <h2 id="Lists-title">Lists</h2>
+                <ul id="lists"></ul>
+                <form id ="new-list-form" action="submit">
+                    <input type="text" placeholder="Create New List">
+                    <button type="submit">&#10010;</button>
+                </form>
+            </div>
+            <div id="toDoList">
+                <h2 id="name"></h2>
+                <ul id="items"></ul>
+                <form id="new-item-form" action="submit">
+                    <input type="text" placeholder="Create New Item">
+                    <button type="submit">&#10010;</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

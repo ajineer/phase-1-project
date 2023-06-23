@@ -4,31 +4,93 @@
             "id":1,
             "name":"chores",
             "color":"green",
-            "items":["take out trash", "do dishes"]
+            "items":{
+                "1":{
+                    "item":"take out trash",
+                    "strike-through":false
+                },
+                "2":{
+                    "item":"do dishes",
+                    "strik-through":false
+               }
+            }    
         },
         {
             "id":2,
             "name":"school",
             "color":"red",
-            "items":["study for code challenge", "catch up on labs"]
+            "items":{
+                "1":{
+                    "item":"study for code challenge",
+                    "strike-through":false
+                }, 
+                "2":{
+                    "item":"catch up on labs",
+                    "strike-through":false
+                }
+        
+            }
         },
         {
             "id":3,
             "name":"work",
             "color":"pink",
-            "items":["be to work on time", "take lunch at 12", "clock out before leaving"]
+            "items": {
+                "1": {
+                    "item": "be to work on time",
+                    "strike-through": false
+                },     
+                "2": {
+                    "item": "take lunch at 12",
+                    "strike-through": false
+                },
+                "3":{
+                    "item": "clock out before leaving",
+                    "strike-through": false
+                }
+            }
         },
         {
             "id":4,
             "name":"personal growth",
             "color":"grey",
-            "items":["read 12 rules for life by Jordan Peterson", "meditate for 30 min everyday", "stretch for 10 min"]
+            "items":{
+                "1":{
+                    "item":"read 12 rules for life by Jordan Peterson",
+                    "strike-through":false
+                },
+                "2":{
+                    "item":"meditate for 30 min everyday",
+                    "strike-through":false
+                },
+                "3":{
+                    "item":"stretch for 10 min",
+                    "strike-through":false
+                }
+            }
         },
         {
             "id":5,
             "name":"workout",
             "color":"yellow",
-            "items":["run 1 mile", "50 push ups", "5 min heavy bag round", "20 speed kicks on each leg", "3 sets"]
+            "items":{
+                "1":{
+                    "item":"run one mile",
+                    "strike-through":false
+                },
+                "2":{
+                    "item":"do 50 push-ups",
+                    "strike-through":false
+                },
+                "3":{
+                    "item":"5 min heavy bag round",
+                    "strike-through":false
+                },
+                "4":{
+                    "item": "20 speed kicks on each leg",
+                    "strike-through": false
+                }
+            }
         }
     ]
 }

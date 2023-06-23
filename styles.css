@@ -1,0 +1,87 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+#main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightgray;
+    max-width: max-content;
+    max-height: max-content;
+    margin: auto;
+    padding: 1rem;
+    margin-top: 25%;
+    border-radius: 5%;
+    border: solid .25rem gray;
+}
+h1{
+    background-color: orange;
+    text-align: center;
+    margin: auto;
+    border-radius: 1rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
+}
+
+#toDo-columns{
+    display: inline-flex;
+    flex-direction: row;
+}
+
+/* list of todo lists styling*/
+
+#toDoLists{
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+#toDoLists h2{
+    background-color: pink;
+    text-align: center;
+}
+#lists{
+    background-color: blueviolet;
+    padding-left: 0;
+}
+
+#lists li{
+    list-style: none;
+    background-color:lightblue;
+    margin-top: .25rem;
+}
+
+#lists li:hover{
+    background-color: white;
+}
+/* todo list styling*/
+
+#toDoList{
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    padding-bottom: 0;
+}
+#toDoList h2{
+    background-color: pink;
+    text-align: center;
+}
+#items{
+    background-color: blueviolet;
+    padding-left: 0;
+}
+
+#items li{
+    list-style: none;
+    background-color:lightblue;
+    margin-top: .25rem;
+}
+
+#new-item-form{
+    background-color: red;
+    margin-top: auto;
+} 
