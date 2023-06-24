@@ -1,9 +1,10 @@
 function initialized(){
     let listObj
+    let Lists
     fetch("http://localhost:3000/Lists")
     .then(res => res.json())
     .then(data => {
-        let Lists = data
+        Lists = data
         loadListDetails(Lists[0])
         Lists.forEach(list => {
             loadListName(list);
@@ -28,16 +29,32 @@ function initialized(){
         thisTitle.innerText = aList.name
 
         toDoObjects.forEach(Object => {
-            let theItem = document.createElement("li")
-            theItem.innerText = Object.item
-            let buttons = document.createElement("div")
-            buttons.id = "buttons-container"
-            buttons.innerHTML = "<button id=\"edit\"><i>&#9998;</i></button><button id=\"checkbox\"><i>&#10003;</i></button> <button id=\"trashbutton\"><i>&#10006;</i></button>"
-            theItem.appendChild(buttons)
-            toDoList.appendChild(theItem)
+            let toDoListItem = createListItem(Object.item)
+            let editBtn = document.querySelector("#edit")
+            toDoList.appendChild(toDoListItem)
+            let textSpan = document.querySelector("#itemText")
+            document.querySelector("#edit").addEventListener("click", (e)=>{
+                return 1;
+            })
         })
     }
 
+    
+    function createListItem(appendText){
+        
+        let theItem = document.createElement("li")
+        let textSpan = document.createElement("span")
+        let buttons = document.createElement("div")
+        
+        textSpan.id = "itemText"
+        textSpan.innerText = appendText
+        buttons.id = "buttons-container"
+        buttons.innerHTML = "<button id=\"edit\"><i>&#9998;</i></button><button id=\"checkbox\"><i>&#10003;</i></button><button id=\"trash\"><i>&#10006;</i></button>"
+        
+        theItem.appendChild(textSpan)
+        theItem.appendChild(buttons)
+        return theItem
+    }
     function deleteListDetails(){
         let currentToDoList = document.querySelector("#items")
         currentToDoList.innerHTML = "<ul id=\"items\"></ul>"

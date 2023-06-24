@@ -56,6 +56,10 @@ h1{
 #lists li:hover{
     background-color: white;
 }
+
+#new-list-form{
+    margin-top: auto;
+}
 /* todo list styling*/
 
 #toDoList{
@@ -76,12 +80,16 @@ h1{
 }
 
 #items li{
+    display: flex;
     list-style: none;
     background-color:lightblue;
     margin-top: .25rem;
 }
 
+#items li #buttons-container{
+    margin-left: auto;
+}
+
 #new-item-form{
-    background-color: red;
     margin-top: auto;
 } 
