@@ -48,13 +48,18 @@ h1{
 }
 
 #lists li{
+    display: flex;
     list-style: none;
     background-color:lightblue;
     margin-top: .25rem;
 }
 
+#lists li div{
+    margin-left: auto;
+}
+
 #lists li:hover{
-    background-color: white;
+    background-color: cyan;
 }
 
 #new-list-form{

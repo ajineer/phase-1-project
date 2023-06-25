@@ -5,7 +5,7 @@ function initialized(){
     .then(res => res.json())
     .then(data => {
         Lists = data
-        loadListDetails(Lists[0])
+        //loadListDetails(Lists[0])
         Lists.forEach(list => {
             loadListName(list);
         });
@@ -13,33 +13,54 @@ function initialized(){
 
     function loadListName(aList){
         let toDoLists = document.querySelector("#lists")
-        let listTitle = document.createElement("li")
-        listTitle.innerText = aList.name
-        toDoLists.appendChild(listTitle)
-        listTitle.addEventListener("click", (e) => {
-            deleteListDetails();
-            loadListDetails(aList)
-        })
-    }
-    function loadListDetails(aList){
+        let listItem = createListsItem(aList.name)
         
-        let toDoList = document.querySelector('#items')
-        let toDoObjects = Object.values(aList.items)
-        let thisTitle = document.querySelector("#name")
-        thisTitle.innerText = aList.name
-
-        toDoObjects.forEach(Object => {
-            let toDoListItem = createListItem(Object.item)
-            let editBtn = document.querySelector("#edit")
-            toDoList.appendChild(toDoListItem)
-            let textSpan = document.querySelector("#itemText")
-            document.querySelector("#edit").addEventListener("click", (e)=>{
-                return 1;
+        toDoLists.appendChild(listItem)
+        let editButton = listItem.querySelector("#edit")
+        
+        editButton.addEventListener("click", (e) =>{
+            listNameSpan = listItem.querySelector("span")
+            listNameSpan.style.backgroundColor = "white"
+            listNameSpan.contentEditable = true
+            listNameSpan.focus();
+            listNameSpan.addEventListener("keydown", event =>{
+                if(event.key === "Enter"){
+                    event.preventDefault()
+                    listNameSpan.contentEditable = false
+                    listNameSpan.style.backgroundColor = ""
+                    patchListName(aList.id, listNameSpan.innerText)
+                }
             })
         })
     }
+    function patchListName(anId, aListName){
+        fetch(`http://localhost:3000/Lists/${anId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                name: aListName
+            })
+        })
 
+    }
     
+    function createListsItem(listName){
+        let listsItem = document.createElement("li")
+        let listsSpan = document.createElement("span")
+        let editButton = document.createElement("div")
+
+        editButton.id = "listsEditButton"
+        listsSpan.innerText = listName
+        editButton.innerHTML = "<button id=\"edit\"><i>&#9998;</i></button><button id=\"deleteList\"><i>&#9988;</i></button>"
+        listsItem.append(listsSpan, editButton)
+        
+        return listsItem
+
+    }
+
     function createListItem(appendText){
         
         let theItem = document.createElement("li")
@@ -53,6 +74,7 @@ function initialized(){
         
         theItem.appendChild(textSpan)
         theItem.appendChild(buttons)
+        
         return theItem
     }
     function deleteListDetails(){
