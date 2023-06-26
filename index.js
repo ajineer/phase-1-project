@@ -161,12 +161,9 @@ function initialized(){
     function createListsItem(listName){
         let listsItem = document.createElement("li")
         let listsSpan = document.createElement("span")
-        let editButton = document.createElement("div")
 
-        editButton.id = "listsEditButton"
         listsSpan.innerText = listName
-        editButton.innerHTML = "<button id=\"edit\"><i>&#9998;</i></button>"
-        listsItem.append(listsSpan, editButton)
+        listsItem.append(listsSpan)
         
         return listsItem
     }

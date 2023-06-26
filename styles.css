@@ -5,13 +5,13 @@ body{
 #main-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background-color: lightgray;
+    background-color: rgb(204, 243, 245);
     max-width: max-content;
     max-height: max-content;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 1rem;
-    margin-top: 25%;
+    margin-top: 1rem;
     border-radius: 5%;
     border: solid .25rem gray;
 }
@@ -32,18 +32,25 @@ h1{
 /* list of todo lists styling*/
 
 #toDoLists{
-    background-color: gray;
+    background-color: grey;
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
     margin-right: 1rem;
+    border-radius: .5rem;
+    padding: .5rem;
 }
 #toDoLists h2{
-    background-color: pink;
+    background-color: lightgray;
+    border-radius: 25rem;
+    max-width: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 #lists{
-    background-color: blueviolet;
     padding-left: 0;
 }
 
@@ -52,6 +59,8 @@ h1{
     list-style: none;
     background-color:lightblue;
     margin-top: .25rem;
+    padding-left: .25rem;
+    border-radius: .25rem;
 }
 
 #lists li div{
@@ -73,10 +82,17 @@ h1{
     flex-direction: column;
     margin-top: 1rem;
     margin-left: 1rem;
-    padding-bottom: 0;
+    padding: .5rem;
+    border-radius: .5rem;
 }
-#toDoList h2{
-    background-color: pink;
+#toDoList #name{
+    background-color: lightgray;
+    max-width: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto; 
+    border-radius: 25rem;
     text-align: center;
 }
 #task-list{
@@ -86,6 +102,13 @@ h1{
 #incomplete-items-div{
     margin-right: 1rem;
 }
+#incomplete-list-header{
+    background-color: red;
+    max-width: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 25rem;
+}
 #incomplete-items, #complete-items{
     padding-left: 0;
 }
@@ -94,22 +117,49 @@ h1{
     list-style: none;
     background-color: red;
     margin-top: .25rem;
+    border-radius: .25rem;
+    padding-left: .25rem;
+}
+
+#incomplete-items li span{
+    padding-right: 1rem;
 }
 
 #incomplete-items li #buttons-container, #complete-items li #buttons-container{
     margin-left: auto;
 }
+
+#incomplete-items li #buttons-container button, #complete-items li #buttons-container button{
+    border-radius: 0 .25rem .25rem 0;
+    border: none;
+    display: flex;
+    justify-self: center;
+}
+
 /* complete list styling*/
 #complete-items-div{
     margin-left: 1rem; 
+}
+
+#complete-list-header{
+    background-color: limegreen;
+    max-width: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 25rem;
 }
 #complete-items li{
     display: flex;
     list-style: none;
     background-color: limegreen;
     margin-top: .25rem;
+    border-radius: .25rem;
+    padding-left: .25rem;
 }
 
+#complete-items li span{
+    padding-right: 1rem;
+}
 
 #new-item-form{
     margin-top: auto;
