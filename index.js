@@ -1,27 +1,59 @@
 function initialized(){
-    let listObj
-    let Lists
     fetch("http://localhost:3000/Lists")
     .then(res => res.json())
     .then(data => {
-        Lists = data
+        let Lists = data
+        let currentList
         Lists.forEach(list => {
-            //loadListName(list)
             let toDoLists = document.querySelector("#lists")
             let listItem = createListsItem(list.name)
             toDoLists.appendChild(listItem)
-            listItem.addEventListener("click", ()=>{
-                loadListItems(list.incomplete, list.complete, list.name)
-                let domICitems = document.querySelector("#incomplete-items").querySelectorAll("li")
-                domICitems.forEach(icItem =>{
-                    icItem.querySelector("#checkbox").addEventListener("click", ()=>{
-                        let updatedTasks = updateICtasks(icItem.querySelector("span").innerText, list)
-                        updateIClist(list, updatedTasks)
-                    })
-                })
+            // let domTasks
+            let domTasks
+            listItem.addEventListener("click", (e)=>{
+                // reset incomplete and completed task list
+                deleteListDetails();
+                // load the list name above c and ic tasks
+                loadListName(list.name)
+                // make both an ic list and c list of dom elements
+                domTasks = makeListItems(list.incomplete, list.complete)
+                // render the ic an c items into the dom
+                renderTasks(domTasks[0], domTasks[1])
+                addICEventListener(domTasks)
             })
         })    
     })
+    function addICEventListener(liArray){
+        let tasks = [liArray[0].map(liItem =>{
+            return liItem.querySelector("span").innerText
+        }), liArray[1].map(liItem =>{
+            return liItem.querySelector("span").innerText
+        })]
+        let domifyIctasks
+        liArray[0].forEach(li =>{
+            li.querySelector("#checkbox").addEventListener("click", ()=>{
+                currentICtask = updateICtasks(li.querySelector("span").innerText, tasks)
+                domifyIctasks = makeListItems(currentICtask[0], currentICtask[1])
+                renderTasks(domifyIctasks[0], domifyIctasks[1])
+            })
+        })
+    }
+    function loadListName(aListName){
+        let listDOMName = document.querySelector("#name")
+        listDOMName.innerText = aListName
+    }
+
+    function renderTasks(domIncompleteTasks, domcompletedTasks){
+        let incompleteDOMtasks = document.querySelector("#incomplete-items")
+        let completeDOMtasks = document.querySelector("#complete-items")
+        
+        domIncompleteTasks.forEach(icTask =>{
+            incompleteDOMtasks.appendChild(icTask)
+        })
+        domcompletedTasks.forEach(cTask =>{
+            completeDOMtasks.appendChild(cTask)
+        })
+    }
 
     function updateIClist(aList, tasks){
         fetch(`http://localhost:3000/Lists/${aList.id}`,{
@@ -38,8 +70,8 @@ function initialized(){
             })
         })
         .then(res => res.json())
-        .then(patchedList => loadListItems(patchedList.incomplete, patchedList.complete, patchedList)
-        )
+        //.then(patchedList => loadListItems(patchedList.incomplete, patchedList.complete)
+        //)
     }
 
         // let editButton = listItem.querySelector("#edit")
@@ -76,27 +108,44 @@ function initialized(){
         //     })
         // })
 
-    function updateICtasks(taskText, aList){
-        let icIndex = aList.incomplete.indexOf(taskText)
-        aList.complete.push(taskText)
-        aList.incomplete.splice(icIndex, 1)
-        return [aList.incomplete, aList.complete]
+
+    function updateICtasks(liTask, aList){
+        let icIndex = aList[0].indexOf(liTask)
+        aList[1].push(liTask)
+        aList[0].splice(icIndex, 1)
+        return [aList[0], aList[1]]
     }
 
-    function loadListItems(incompleteList, completeList, listName){
-        deleteListDetails();
-        let alistName = document.querySelector("#name")
-        alistName.innerText = listName
-        let incompleteDOMList = document.querySelector("#incomplete-items")
-        let completeDOMList = document.querySelector("#complete-items")
-        incompleteList.forEach(item =>{
-            let incompleteTask = createListItem(item)
-            incompleteDOMList.appendChild(incompleteTask)
+    function updateCtasks(liTask, aList){
+        let cIndex = aList[1].indexOf(liTask)
+        aList[0].push(liTask)
+        aList[1].splice(cIndex, 1)
+        return [aList[0], aList[1]]
+    }
+    
+    function makeListItems(incompleteList, completeList){
+        // deleteListDetails();
+        // let alistName = document.querySelector("#name")
+        // alistName.innerText = listName
+        // let incompleteDOMList = document.querySelector("#incomplete-items")
+        // let completeDOMList = document.querySelector("#complete-items")
+        // incompleteList.forEach(item =>{
+        //     let incompleteTask = createListItem(item)
+        //     incompleteDOMList.appendChild(incompleteTask)
+        // })
+        // completeList.forEach(item =>{
+        //     let completeTask = createListItem(item)
+        //     completeDOMList.appendChild(completeTask)
+        // })
+        let domCitems = completeList.map(cTask =>{
+            cTask = createListItem(cTask)
+            return cTask
         })
-        completeList.forEach(item =>{
-            let completeTask = createListItem(item)
-            completeDOMList.appendChild(completeTask)
-        })  
+        let domICitems = incompleteList.map(icTask =>{
+            icTask = createListItem(icTask)
+            return icTask
+        })
+        return [domICitems, domCitems]
     }
     function deleteList(listId){
         fetch(`http://localhost:3000/Lists/${listId}`, {
@@ -153,6 +202,8 @@ function initialized(){
     function deleteListDetails(){
         let incompleteList = document.querySelector("#incomplete-items")
         let completeList = document.querySelector("#complete-items")
+        let listName = document.querySelector("#name")
+        listName.innerText = ""
         incompleteList.innerHTML = "<ul id=\"incomplete-items\"></ul>"
         completeList.innerHTML = "<ul id=\"complete-items\"></ul>"
     }
