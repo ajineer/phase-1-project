@@ -79,21 +79,37 @@ h1{
     background-color: pink;
     text-align: center;
 }
-#items{
-    background-color: blueviolet;
+#task-list{
+    display: flex;
+}
+/* incomplete list styling*/
+#incomplete-items-div{
+    margin-right: 1rem;
+}
+#incomplete-items, #complete-items{
     padding-left: 0;
 }
-
-#items li{
+#incomplete-items li{
     display: flex;
     list-style: none;
-    background-color:lightblue;
+    background-color: red;
     margin-top: .25rem;
 }
 
-#items li #buttons-container{
+#incomplete-items li #buttons-container, #complete-items li #buttons-container{
     margin-left: auto;
 }
+/* complete list styling*/
+#complete-items-div{
+    margin-left: 1rem; 
+}
+#complete-items li{
+    display: flex;
+    list-style: none;
+    background-color: limegreen;
+    margin-top: .25rem;
+}
+
 
 #new-item-form{
     margin-top: auto;

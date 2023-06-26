@@ -20,7 +20,16 @@
             </div>
             <div id="toDoList">
                 <h2 id="name"></h2>
-                <ul id="items"></ul>
+                <div id="task-list">
+                    <div id="incomplete-items-div">
+                        <h2>Incomplete</h2>
+                        <ul id="incomplete-items"></ul>
+                    </div>
+                    <div id="complete-items-div">
+                        <h2>Complete</h2>
+                        <ul id="complete-items"></ul>
+                    </div>
+                </div>
                 <form id="new-item-form" action="submit">
                     <input type="text" placeholder="Create New Item">
                     <button type="submit">&#10010;</button>
