@@ -1,7 +1,6 @@
 function initialized(){
     let Lists
     let currentlist
-    let newList
     fetch("http://localhost:3000/Lists")
     .then(res => res.json())
     .then(data => {
@@ -11,26 +10,37 @@ function initialized(){
         })    
         loadListDetail(Lists[0])
         createNewList()
-        createNewItem(currentlist)
     })
 
-    function createNewItem(currentlist){
+    function createNewItem(aList){
         document.querySelector("#new-item-form").addEventListener("submit", (e)=>{
             e.preventDefault()
             if(e.target[0].value !==""){
-                currentlist.incomplete.push(e.target[0].value)
-                patchTasks(currentlist, [currentlist.incomplete, currentlist.complete])
-                loadListDetail(currentlist)
+                aList.incomplete.push(e.target[0].value)
+                fetch(`http://localhost:3000/Lists/${aList.id}`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        id: aList.id,
+                        name: aList.name,
+                        incomplete: aList.incomplete,
+                        complete: aList.complete
+                    })
+                })
+                loadListDetail(aList)
             }else{
                 alert("Please enter a new task!")
             }
+            e.target.reset()
         })
     }
 
     function createNewList(){
         document.querySelector("#new-list-form").addEventListener("submit", (e)=>{
             e.preventDefault()
-            console.log(typeof e.target[0].value)
             if(e.target[0].value !== ""){
                 fetch(`http://localhost:3000/Lists`, {
                     method: "POST",
@@ -45,7 +55,9 @@ function initialized(){
                         complete: []
                     })
                 }).then(res => res.json())
-                .then(newList => loadLists(newList))
+                .then(newList => {
+                    loadLists(newList)
+                })
                 
             }else{
                 alert("Please enter a name for this new list!")
@@ -72,6 +84,31 @@ function initialized(){
         document.querySelector("#name").innerText = aList.name
         renderTasks(tasksLi[0], tasksLi[1])
         addCBEventListeners(tasksLi, currentlist)
+        document.querySelector("#new-item-form").addEventListener("submit", (e)=>{
+            e.preventDefault()
+            if(e.target[0].value !==""){
+                currentlist.incomplete.push(e.target[0].value)
+                fetch(`http://localhost:3000/Lists/${currentlist.id}`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        id: currentlist.id,
+                        name: currentlist.name,
+                        incomplete: currentlist.incomplete,
+                        complete: currentlist.complete
+                    })
+                }).then(res => res.json())
+                .then(data => {
+                    loadListDetail(data)
+                })
+            }else{
+                alert("Please enter a new task!")
+            }
+            e.target.reset()
+        })
     }
 
     function addCBEventListeners(aTaskList, currentlist){
@@ -90,17 +127,17 @@ function initialized(){
             })
         })
     }
-    function patchTasks(currentlist, taskList){
+    function patchTasks(aList, taskList){
         
-        fetch(`http://localhost:3000/Lists/${currentlist.id}`, {
+        fetch(`http://localhost:3000/Lists/${aList.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                id: currentlist.id,
-                name: currentlist.name,
+                id: aList.id,
+                name: aList.name,
                 incomplete: taskList[0],
                 complete: taskList[1]
             })

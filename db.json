@@ -13,7 +13,8 @@
       "id": 2,
       "name": "school",
       "incomplete": [
-        "study for code challenge"
+        "study for code challenge",
+        "complete project"
       ],
       "complete": [
         "catch up on labs"
@@ -34,14 +35,15 @@
       "name": "personal growth",
       "incomplete": [
         "read 12 rules for life by Jordan Peterson",
-        "stretch for 10 min",
-        "meditate for 30 min everyday"
+        "stretch for 10 min"
       ],
-      "complete": []
+      "complete": [
+        "meditate for 30 min everyday"
+      ]
     },
     {
       "id": 5,
-      "name": "work",
+      "name": "workout",
       "incomplete": [
         "run one mile",
         "do 50 push-ups",
