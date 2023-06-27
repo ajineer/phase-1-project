@@ -4,17 +4,18 @@
       "id": 1,
       "name": "chores",
       "incomplete": [
-        "do dishes",
-        "take out trash"
+        "clean bathrooms",
+        "do dishes"
       ],
-      "complete": []
+      "complete": [
+        "take out trashes"
+      ]
     },
     {
       "id": 2,
       "name": "school",
       "incomplete": [
-        "study for code challenge",
-        "complete project"
+        "study for code challenge"
       ],
       "complete": [
         "catch up on labs"
@@ -46,9 +47,9 @@
       "name": "workout",
       "incomplete": [
         "run one mile",
-        "do 50 push-ups",
         "5 min heavy bag round",
-        "20 speed kicks on each leg"
+        "20 speed kicks on each leg",
+        "do 50 push-ups"
       ],
       "complete": []
     }

@@ -103,7 +103,7 @@ h1{
     margin-right: 1rem;
 }
 #incomplete-list-header{
-    background-color: red;
+    background-color: #E13F0A;
     max-width: fit-content;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -115,7 +115,7 @@ h1{
 #incomplete-items li{
     display: flex;
     list-style: none;
-    background-color: red;
+    background-color: #E13F0A;
     margin-top: .25rem;
     border-radius: .25rem;
     padding-left: .25rem;
@@ -126,14 +126,25 @@ h1{
 }
 
 #incomplete-items li #buttons-container, #complete-items li #buttons-container{
+    display: flex;
     margin-left: auto;
 }
 
-#incomplete-items li #buttons-container button, #complete-items li #buttons-container button{
+#incomplete-items #checkbox, #complete-items #checkbox{
     border-radius: 0 .25rem .25rem 0;
     border: none;
     display: flex;
     justify-self: center;
+}
+
+#incomplete-items #editTask, #complete-items #editTask{
+    border: none;
+    justify-self: center;
+    border-right: solid .1rem black;
+}
+
+#editTask:hover, #checkbox:hover{
+    background-color: rgb(201, 201, 128);
 }
 
 /* complete list styling*/
@@ -142,7 +153,7 @@ h1{
 }
 
 #complete-list-header{
-    background-color: limegreen;
+    background-color: #76E01F;
     max-width: fit-content;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -151,7 +162,7 @@ h1{
 #complete-items li{
     display: flex;
     list-style: none;
-    background-color: limegreen;
+    background-color: #76E01F;
     margin-top: .25rem;
     border-radius: .25rem;
     padding-left: .25rem;
