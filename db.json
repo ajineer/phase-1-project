@@ -4,8 +4,8 @@
       "id": 1,
       "name": "chores",
       "incomplete": [
-        "clean bathrooms",
-        "take out trashes"
+        "clean bathroom",
+        "take out trash"
       ],
       "complete": [
         "do dishes"

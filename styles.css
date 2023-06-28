@@ -24,9 +24,11 @@ h1{
     margin-left: auto;
     margin-right: auto;
     max-width: fit-content;
-    padding-left: .25rem;
-    padding-right: .25rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
     padding-bottom: 0;
+    border-top: solid black .2rem;
+    border-bottom: solid black .2rem;
 }
 
 #toDo-columns{
@@ -57,7 +59,6 @@ h1{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    border-left: solid #E38D3D .5rem;
 }
 #lists{
     padding-left: 0;
@@ -81,7 +82,12 @@ h1{
 }
 
 #new-list-form{
+    display: flex;
     margin-top: auto;
+}
+
+#new-item-form{
+    display: flex;
 }
 /* todo list styling*/
 
@@ -132,10 +138,12 @@ h1{
     border-left: solid #E13F0A .1rem;
     margin-top: .25rem;
     padding-left: .25rem;
+    border-bottom: solid #7E9CA8 .1rem;
 }
 
 #incomplete-items li span{
     padding-right: 1rem;
+    max-width: 14ch;
 }
 
 
@@ -180,8 +188,11 @@ h1{
     border-left: solid #76E01F .1rem;
     margin-top: .25rem;
     padding-left: .25rem;
+    border-bottom: solid #7E9CA8 .1rem;
 }
 
 #complete-items li span{
     padding-right: 1rem;
+    word-wrap: break-word;
+    max-width: 14ch;
 }
