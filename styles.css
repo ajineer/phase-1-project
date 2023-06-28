@@ -8,7 +8,7 @@ body{
     flex-direction: column;
     background: linear-gradient(#7495A8, #E3F5FF);
     align-items: center;
-    max-width: 90vw;
+    max-width: 60vw;
     height: 90vh;
     margin-left: auto;
     margin-right: auto;
@@ -24,7 +24,6 @@ h1{
     margin-left: auto;
     margin-right: auto;
     max-width: fit-content;
-    border-radius: 1rem;
     padding-left: .25rem;
     padding-right: .25rem;
     padding-bottom: 0;
@@ -52,16 +51,17 @@ h1{
     border: solid black .1rem;
 }
 #toDoLists h2{
-    border-radius: 25rem;
     max-width: fit-content;
     padding-left: 1rem;
     padding-right: 1rem;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    border-left: solid #E38D3D .5rem;
 }
 #lists{
     padding-left: 0;
+    border-top: solid black .2rem;
 }
 
 #lists li{
@@ -101,11 +101,11 @@ h1{
     padding-right: 1rem;
     margin-left: auto;
     margin-right: auto; 
-    border-radius: 25rem;
     text-align: center;
 }
 #task-list{
     display: flex;
+    border-top: solid black .1rem;
 }
 /* incomplete list styling*/
 #incomplete-items-div{
@@ -119,18 +119,18 @@ h1{
 }
 #incomplete-items, #complete-items{
     padding-left: 0;
+    border-top: solid black .1rem;
 }
 #border{
     height: 100%;
-    width: .1rem;
+    /* width: .1rem; */
     border-right: solid black .1rem;
 }
 #incomplete-items li{
     display: flex;
     list-style: none;
-    border-bottom: solid #E13F0A .1rem;
+    border-left: solid #E13F0A .1rem;
     margin-top: .25rem;
-    border-radius: .25rem;
     padding-left: .25rem;
 }
 
@@ -177,9 +177,8 @@ h1{
 #complete-items li{
     display: flex;
     list-style: none;
-    border-bottom: solid #76E01F .1rem;
+    border-left: solid #76E01F .1rem;
     margin-top: .25rem;
-    border-radius: .25rem;
     padding-left: .25rem;
 }
 
