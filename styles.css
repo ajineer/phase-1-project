@@ -8,8 +8,8 @@ body{
     flex-direction: column;
     background: linear-gradient(#7495A8, #E3F5FF);
     align-items: center;
-    max-width: 60vw;
-    height: 90vh;
+    max-width: fit-content;
+    /* height: 90vh; */
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
@@ -96,7 +96,7 @@ h1{
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
-    margin-left: 20%;
+    margin-right: 3.5rem;
     padding: 0 2rem 0 2rem;
     border-radius: .5rem;
     border: solid black .1rem;
@@ -195,4 +195,22 @@ h1{
     padding-right: 1rem;
     word-wrap: break-word;
     max-width: 14ch;
+}
+
+@media (max-width: 57.5rem){
+    #toDo-columns{
+        flex-direction: column;
+    }
+    #main-container, #toDoList, #toDo-columns, #toDoLists{
+        overflow: scroll;
+    }
+    #main-container h1{
+        word-wrap: break-word;
+    }
+    #task-list{
+        flex-direction: column;
+    }
+    #complete-items-div{
+        margin-left: 0; 
+    }
 }
