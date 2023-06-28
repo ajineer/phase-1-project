@@ -1,13 +1,15 @@
 body{
     padding: 0;
     margin: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 #main-container{
     display: flex;
     flex-direction: column;
-    background-color: rgb(204, 243, 245);
-    max-width: max-content;
-    max-height: max-content;
+    background: linear-gradient(#7495A8, #E3F5FF);
+    align-items: center;
+    max-width: 90vw;
+    height: 90vh;
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
@@ -16,32 +18,40 @@ body{
     border: solid .25rem gray;
 }
 h1{
-    background-color: orange;
+    color: black;
+    font-size: 4rem;
     text-align: center;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: fit-content;
     border-radius: 1rem;
     padding-left: .25rem;
     padding-right: .25rem;
+    padding-bottom: 0;
 }
 
 #toDo-columns{
     display: inline-flex;
     flex-direction: row;
+    justify-self: center;
+    margin-bottom: 2rem;
+    height: 90%;
+    width: 90%;
 }
 
 /* list of todo lists styling*/
 
 #toDoLists{
-    background-color: grey;
+    background-color: #A88D6D;
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
     margin-right: 1rem;
     border-radius: .5rem;
     padding: .5rem;
+    border: solid black .1rem;
 }
 #toDoLists h2{
-    background-color: lightgray;
     border-radius: 25rem;
     max-width: fit-content;
     padding-left: 1rem;
@@ -57,10 +67,9 @@ h1{
 #lists li{
     display: flex;
     list-style: none;
-    background-color:lightblue;
     margin-top: .25rem;
     padding-left: .25rem;
-    border-radius: .25rem;
+    border-bottom: solid #7E9CA8 .1rem;
 }
 
 #lists li div{
@@ -77,16 +86,16 @@ h1{
 /* todo list styling*/
 
 #toDoList{
-    background-color: gray;
+    background-color: #A88D6D;
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
-    margin-left: 1rem;
-    padding: .5rem;
+    margin-left: 20%;
+    padding: 0 2rem 0 2rem;
     border-radius: .5rem;
+    border: solid black .1rem;
 }
 #toDoList #name{
-    background-color: lightgray;
     max-width: fit-content;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -103,19 +112,23 @@ h1{
     margin-right: 1rem;
 }
 #incomplete-list-header{
-    background-color: #E13F0A;
+    border-left: solid #E13F0A .5rem;
     max-width: fit-content;
-    padding-left: 1rem;
+    padding-left: .25rem;
     padding-right: 1rem;
-    border-radius: 25rem;
 }
 #incomplete-items, #complete-items{
     padding-left: 0;
 }
+#border{
+    height: 100%;
+    width: .1rem;
+    border-right: solid black .1rem;
+}
 #incomplete-items li{
     display: flex;
     list-style: none;
-    background-color: #E13F0A;
+    border-bottom: solid #E13F0A .1rem;
     margin-top: .25rem;
     border-radius: .25rem;
     padding-left: .25rem;
@@ -124,6 +137,7 @@ h1{
 #incomplete-items li span{
     padding-right: 1rem;
 }
+
 
 #incomplete-items li #buttons-container, #complete-items li #buttons-container{
     display: flex;
@@ -135,6 +149,7 @@ h1{
     border: none;
     display: flex;
     justify-self: center;
+    align-items: center;
 }
 
 #incomplete-items #editTask, #complete-items #editTask{
@@ -153,16 +168,16 @@ h1{
 }
 
 #complete-list-header{
-    background-color: #76E01F;
+    border-left: solid #76E01F .5rem;
     max-width: fit-content;
-    padding-left: 1rem;
+    padding-left: .25rem;
     padding-right: 1rem;
-    border-radius: 25rem;
 }
+
 #complete-items li{
     display: flex;
     list-style: none;
-    background-color: #76E01F;
+    border-bottom: solid #76E01F .1rem;
     margin-top: .25rem;
     border-radius: .25rem;
     padding-left: .25rem;
@@ -171,7 +186,3 @@ h1{
 #complete-items li span{
     padding-right: 1rem;
 }
-
-#new-item-form{
-    margin-top: auto;
-} 

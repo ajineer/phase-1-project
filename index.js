@@ -1,6 +1,10 @@
 function initialized(){
+    
     let Lists
     let currentlist
+    let incompleteList = document.querySelector("#incomplete-items")
+    let completeList = document.querySelector("#complete-items")
+
     fetch("http://localhost:3000/Lists")
     .then(res => res.json())
     .then(data => {
@@ -54,95 +58,8 @@ function initialized(){
         })
     }
 
-    function loadLists(aList){
-        let toDoLists = document.querySelector("#lists")
-        let listItem = createListsItem(aList.name)
-        toDoLists.appendChild(listItem)
-        listItem.addEventListener("click", (e)=>{
-            loadListDetail(aList)
-        })
-    }
-
-    function loadListDetail(aList){
-        currentlist = aList
-        let tasksLi = [currentlist.incomplete.map(icTask =>{
-            return createListItem(icTask)
-        }), currentlist.complete.map(cTask =>{
-            return createListItem(cTask)
-        })]
-        deleteListDetails()
-        document.querySelector("#name").innerText = aList.name
-        renderTasks(tasksLi[0], tasksLi[1])
-        addCBEventListeners(tasksLi, currentlist)
-    }
-
-    function addCBEventListeners(aTaskList, aList){
-        aTaskList[0].forEach(li =>{
-            let checkButton = li.querySelector("#checkbox")
-            let editButton = li.querySelector("#editTask")
-
-            checkButton.addEventListener("click", ()=>{
-                let updatedTasks = updateTasks(li.querySelector("span").innerText, aList, true)
-                patchTasks(aList, updatedTasks)
-                loadListDetail(aList)
-            })
-
-            editButton.addEventListener("click", ()=>{
-                let textSpanElement = li.querySelector("span")
-                let textSpanValue = textSpanElement.innerText
-                textSpanElement.style.backgroundColor = "white"
-                textSpanElement.contentEditable = true
-                textSpanElement.addEventListener("keydown", (e)=>{
-                    if(e.key === "Enter"){
-                        textSpanElement.style.backgroundColor = ""
-                        textSpanElement.contentEditable = false
-                        let editedTasks = editTask(aList, textSpanValue, e, true)
-                        patchTasks(currentlist, editedTasks)
-                    }
-                })     
-            })
-        })
-        aTaskList[1].forEach(li =>{
-            let checkButton = li.querySelector("#checkbox")
-            let editButton = li.querySelector("#editTask")
-
-            checkButton.addEventListener("click", ()=>{
-                let updatedTasks = updateTasks(li.querySelector("span").innerText, currentlist, false)
-                patchTasks(currentlist, updatedTasks)
-                loadListDetail(currentlist)
-            })
-
-            editButton.addEventListener("click", ()=>{
-                let textSpanElement = li.querySelector("span")
-                let textSpanValue = textSpanElement.innerText
-                textSpanElement.style.backgroundColor = "white"
-                textSpanElement.contentEditable = true
-                textSpanElement.addEventListener("keydown", (e)=>{
-                    if(e.key === "Enter"){
-                        textSpanElement.style.backgroundColor = ""
-                        textSpanElement.contentEditable = false
-                        let editedTasks = editTask(aList, textSpanValue, e, false)
-                        console.log(editedTasks)
-                        patchTasks(currentlist, editedTasks)
-                    }
-                })     
-            })
-        })
-    }
-
-    function editTask(aList, currentText, event, isIC){
-        isIC ? (
-            aList.incomplete = aList.incomplete.filter(icTask => icTask !== currentText),
-            aList.incomplete.push(event.target.innerText)
-        ):(
-            aList.complete = aList.complete.filter(cTask => cTask !== currentText),
-            aList.complete.push(event.target.innerText)
-        )
-        return [aList.incomplete, aList.complete]
-    }
-
     function patchTasks(aList, taskList){
-        
+    
         fetch(`http://localhost:3000/Lists/${aList.id}`, {
             method: "PATCH",
             headers: {
@@ -158,7 +75,98 @@ function initialized(){
         })
     }
 
+    function loadLists(aList){
+
+        let toDoLists = document.querySelector("#lists")
+        let listItem = createListsItem(aList.name)
+        
+        toDoLists.appendChild(listItem)
+        listItem.addEventListener("click", (e)=>{
+            loadListDetail(aList)
+        })
+    }
+
+    function loadListDetail(aList){
+        
+        currentlist = aList
+        let tasksLi = [currentlist.incomplete.map(icTask =>{
+                return createListItem(icTask)
+            }), currentlist.complete.map(cTask =>{
+                return createListItem(cTask)
+            })]
+        
+        deleteListDetails()
+        document.querySelector("#name").innerText = aList.name
+        renderTasks(tasksLi[0], tasksLi[1])
+        addEventListeners(tasksLi, currentlist)
+    }
+
+    function addEventListeners(aTaskList, aList){
+        
+        aTaskList.forEach(taskList =>{
+
+            let taskListIndex = aTaskList.indexOf(taskList)
+            
+            taskList.forEach(li =>{
+                
+                let checkBox = li.querySelector("#checkbox")
+                let editButton = li.querySelector("#editTask")
+
+                checkBox.addEventListener("click", ()=>{
+                    if(taskListIndex === 0){
+                        let updatedTasks = updateTasks(li.querySelector("span").innerText, aList, true)
+                        patchTasks(aList, updatedTasks)
+                        loadListDetail(aList)
+                    }else{
+                        let updatedTasks = updateTasks(li.querySelector("span").innerText, aList, false)
+                        patchTasks(aList, updatedTasks)
+                        loadListDetail(aList)
+                    }
+                })
+
+                editButton.addEventListener("click", ()=>{
+
+                    let textSpan = li.querySelector("span")
+                    let textSpanValue = textSpan.innerText
+
+                    textSpan.style.backgroundColor = "white"
+                    textSpan.contentEditable = true
+                    textSpan.focus()
+                    textSpan.addEventListener("keydown", (e)=>{
+                        if(e.key === "Enter"){
+                            textSpan.contentEditable = false
+                            if(taskListIndex === 0){
+                                let editedTasks = editTask(aList, textSpanValue, e, true)
+                                patchTasks(aList, editedTasks)
+                            }else{
+                                let editedTasks = editTask(aList, textSpanValue, e, false)
+                                patchTasks(aList, editedTasks)
+                            }
+                        }
+                    })
+                    textSpan.addEventListener("blur", ()=>{
+                        textSpan.style.backgroundColor = ""
+                        textSpan.contentEditable = false
+                    })
+                })
+            })
+        })
+    }
+
+    function editTask(aList, currentText, event, isIC){
+
+        isIC ? (
+            aList.incomplete = aList.incomplete.filter(icTask => icTask !== currentText),
+            aList.incomplete.push(event.target.innerText)
+        ):(
+            aList.complete = aList.complete.filter(cTask => cTask !== currentText),
+            aList.complete.push(event.target.innerText)
+        )
+        return [aList.incomplete, aList.complete]
+    }
+
     function updateTasks(liTask, aList, taskIC){
+
         taskIC ? (
             aList.complete.push(liTask), 
             aList.incomplete = aList.incomplete.filter(tasks => tasks !== liTask)):(
@@ -186,22 +194,17 @@ function initialized(){
     }
 
     function renderTasks(domIncompleteTasks, domcompletedTasks){
-
-        let incompleteDOMtasks = document.querySelector("#incomplete-items")
-        let completeDOMtasks = document.querySelector("#complete-items")
         
         domIncompleteTasks.forEach(icTask =>{
-            incompleteDOMtasks.appendChild(icTask)
+            incompleteList.appendChild(icTask)
         })
         domcompletedTasks.forEach(cTask =>{
-            completeDOMtasks.appendChild(cTask)
+            completeList.appendChild(cTask)
         })
     }
 
     function deleteListDetails(){
 
-        let incompleteList = document.querySelector("#incomplete-items")
-        let completeList = document.querySelector("#complete-items")
         let listName = document.querySelector("#name")
         
         listName.innerText = ""

@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="main-container">
-        <h1>To Do App</h1>
+        <h1>Task Master</h1>
         <div id="toDo-columns">
             <div id="toDoLists">
                 <h2 id="Lists-title">Lists</h2>
@@ -24,17 +24,17 @@
                     <div id="incomplete-items-div">
                         <h2 id="incomplete-list-header">Incomplete</h2>
                         <ul id="incomplete-items"></ul>
+                        <form id="new-item-form" action="submit">
+                            <input type="text" placeholder="Create New Item">
+                            <input type="submit" value=&#10010;>
+                        </form>
                     </div>
+                    <div id="border"></div>
                     <div id="complete-items-div">
                         <h2 id="complete-list-header">Complete</h2>
                         <ul id="complete-items"></ul>
                     </div>
                 </div>
-                <form id="new-item-form" action="submit">
-                    <input type="text" placeholder="Create New Item">
-                    <input type="submit" value=&#10010;>
-                    <!-- <button type="submit">&#10010;</button> -->
-                </form>
             </div>
         </div>
     </div>

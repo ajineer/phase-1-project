@@ -4,22 +4,21 @@
       "id": 1,
       "name": "chores",
       "incomplete": [
-        "clean bathrooms",
-        "do dishes"
+        "take out trashes",
+        "clean bathrooms"
       ],
       "complete": [
-        "take out trashes"
+        "do dishes"
       ]
     },
     {
       "id": 2,
       "name": "school",
       "incomplete": [
+        "catch up on labs",
         "study for code challenge"
       ],
-      "complete": [
-        "catch up on labs"
-      ]
+      "complete": []
     },
     {
       "id": 3,
@@ -36,11 +35,10 @@
       "name": "personal growth",
       "incomplete": [
         "read 12 rules for life by Jordan Peterson",
-        "stretch for 10 min"
-      ],
-      "complete": [
+        "stretch for 10 min",
         "meditate for 30 min everyday"
-      ]
+      ],
+      "complete": []
     },
     {
       "id": 5,
