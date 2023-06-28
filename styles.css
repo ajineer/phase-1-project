@@ -9,7 +9,6 @@ body{
     background: linear-gradient(#7495A8, #E3F5FF);
     align-items: center;
     max-width: fit-content;
-    /* height: 90vh; */
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
@@ -89,6 +88,7 @@ h1{
 #new-item-form{
     display: flex;
 }
+
 /* todo list styling*/
 
 #toDoList{
@@ -171,6 +171,7 @@ h1{
 }
 
 /* complete list styling*/
+
 #complete-items-div{
     margin-left: 1rem; 
 }
@@ -197,6 +198,7 @@ h1{
     max-width: 14ch;
 }
 
+/*mobile resizing*/
 @media (max-width: 57.5rem){
     #toDo-columns{
         flex-direction: column;
