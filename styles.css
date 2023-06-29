@@ -80,6 +80,10 @@ h1{
     background-color: cyan;
 }
 
+#lists li:focus{
+    background-color: cyan;
+}
+
 #new-list-form{
     display: flex;
     margin-top: auto;

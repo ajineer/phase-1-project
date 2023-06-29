@@ -5,7 +5,7 @@
       "name": "chores",
       "incomplete": [
         "clean bathroom",
-        "take out trashes",
+        "clean bathroom",
         "take out trash"
       ],
       "complete": [
@@ -50,6 +50,12 @@
         "20 speed kicks on each leg",
         "do 50 push-ups"
       ],
+      "complete": []
+    },
+    {
+      "id": 6,
+      "name": "goals",
+      "incomplete": [],
       "complete": []
     }
   ]

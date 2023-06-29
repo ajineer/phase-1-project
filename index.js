@@ -12,7 +12,7 @@ function initialized(){
         Lists.forEach(list => {
             loadLists(list)
         })    
-        loadListDetail(Lists[0])
+        //loadListDetail(Lists[0])
         createNewList()
         createNewItem()
     })
@@ -50,8 +50,9 @@ function initialized(){
                 }).then(res => res.json())
                 .then(newList => {
                     loadLists(newList)
+                    loadListDetail(newList)
                 })
-                
+                e.target.reset()
             }else{
                 alert("Please enter a name for this new list!")
             }
@@ -220,6 +221,7 @@ function initialized(){
         let listsItem = document.createElement("li")
         let listsSpan = document.createElement("span")
 
+        listsItem.setAttribute("tabindex", 1)
         listsSpan.innerText = listName
         listsItem.append(listsSpan)
         
