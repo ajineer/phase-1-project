@@ -165,7 +165,13 @@ h1{
     border-right: solid .1rem black;
 }
 
-#editTask:hover, #checkbox:hover{
+#incomplete-items #deleteTask, #complete-items #deleteTask{
+    border: none;
+    justify-self: center;
+    border-right: solid .1rem black;
+}
+
+#editTask:hover, #checkbox:hover, #deleteTask:hover{
     background-color: rgb(201, 201, 128);
 }
 

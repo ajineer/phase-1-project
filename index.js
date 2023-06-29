@@ -111,6 +111,19 @@ function initialized(){
                 
                 let checkBox = li.querySelector("#checkbox")
                 let editButton = li.querySelector("#editTask")
+                let deleteButton = li.querySelector("#deleteTask")
+
+                deleteButton.addEventListener("click", ()=>{
+                    if(taskListIndex === 0){
+                        let updatedTasks = deleteTask(li.querySelector("span").innerText, aList, true)
+                        patchTasks(aList, updatedTasks)
+                        loadListDetail(aList)
+                    }else{
+                        let updatedTasks = deleteTask(li.querySelector("span").innerText, aList, false)
+                        patchTasks(aList, updatedTasks)
+                        loadListDetail(aList)
+                    }
+                })
 
                 checkBox.addEventListener("click", ()=>{
                     if(taskListIndex === 0){
@@ -153,6 +166,15 @@ function initialized(){
         })
     }
 
+    function deleteTask(text, aList, isIC){
+        isIC ?(
+            aList.incomplete = aList.incomplete.filter(task => task !== text)
+        ):(
+            aList.complete = aList.complete.filter(task => task !== text)
+        )
+        return [aList.incomplete, aList.complete]
+    }
+
     function editTask(aList, currentText, event, isIC){
 
         isIC ? (
@@ -185,7 +207,7 @@ function initialized(){
         textSpan.id = "itemText"
         textSpan.innerText = appendText
         buttons.id = "buttons-container"
-        buttons.innerHTML = "<button id=\"editTask\"><i>&#9998;</i></button><button id=\"checkbox\"><i>&#10003;</i></button>"
+        buttons.innerHTML = "<button id=\"deleteTask\"><i>&#10005;</i></button><button id=\"editTask\"><i>&#9998;</i></button><button id=\"checkbox\"><i>&#10003;</i></button>"
         
         theItem.appendChild(textSpan)
         theItem.appendChild(buttons)
