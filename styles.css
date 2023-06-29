@@ -80,10 +80,6 @@ h1{
     background-color: cyan;
 }
 
-#lists li:focus{
-    background-color: cyan;
-}
-
 #new-list-form{
     display: flex;
     margin-top: auto;
@@ -140,7 +136,7 @@ h1{
     display: flex;
     list-style: none;
     border-left: solid #E13F0A .1rem;
-    margin-top: .25rem;
+    margin-top: .5rem;
     padding-left: .25rem;
     border-bottom: solid #7E9CA8 .1rem;
 }

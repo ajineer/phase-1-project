@@ -12,7 +12,7 @@ function initialized(){
         Lists.forEach(list => {
             loadLists(list)
         })    
-        //loadListDetail(Lists[0])
+        loadListDetail(Lists[0])
         createNewList()
         createNewItem()
     })
@@ -80,7 +80,7 @@ function initialized(){
 
         let toDoLists = document.querySelector("#lists")
         let listItem = createListsItem(aList.name)
-        
+
         toDoLists.appendChild(listItem)
         listItem.addEventListener("click", (e)=>{
             loadListDetail(aList)
@@ -221,7 +221,6 @@ function initialized(){
         let listsItem = document.createElement("li")
         let listsSpan = document.createElement("span")
 
-        listsItem.setAttribute("tabindex", 1)
         listsSpan.innerText = listName
         listsItem.append(listsSpan)
         
