@@ -87,6 +87,7 @@ h1{
 
 #new-item-form{
     display: flex;
+    margin-bottom: .5rem;
 }
 
 /* todo list styling*/
@@ -215,7 +216,7 @@ h1{
         word-wrap: break-word;
     }
     #task-list{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     #complete-items-div{
         margin-left: 0; 

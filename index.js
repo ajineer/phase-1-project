@@ -215,6 +215,17 @@ function initialized(){
         return theItem
     }
 
+    function createListsItem(listName){
+
+        let listsItem = document.createElement("li")
+        let listsSpan = document.createElement("span")
+
+        listsSpan.innerText = listName
+        listsItem.append(listsSpan)
+        
+        return listsItem
+    }
+
     function renderTasks(domIncompleteTasks, domcompletedTasks){
         
         domIncompleteTasks.forEach(icTask =>{
@@ -234,16 +245,6 @@ function initialized(){
         completeList.innerHTML = "<ul id=\"complete-items\"></ul>"
     }
 
-    function createListsItem(listName){
-
-        let listsItem = document.createElement("li")
-        let listsSpan = document.createElement("span")
-
-        listsSpan.innerText = listName
-        listsItem.append(listsSpan)
-        
-        return listsItem
-    }
 }
 
 document.addEventListener("DOMContentLoaded", initialized())
