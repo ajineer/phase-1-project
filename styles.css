@@ -78,6 +78,12 @@ h1{
 
 #lists li button{
     margin-left: auto;
+    border: none;
+    max-width: fit-content;
+}
+
+#lists li button:hover{
+    background-color: rgb(201, 201, 128);
 }
 
 #lists li:hover{
