@@ -147,7 +147,11 @@ function initialized(){
                         loadListDetail(aList)
                     }
                 })
+                
 
+                //* *********************************************************************** *//
+                //* *********************************************************************** *//
+                //* *********************************************************************** *//
                 editButton.addEventListener("click", ()=>{
 
                     let textSpan = li.querySelector("span")
@@ -205,7 +209,8 @@ function initialized(){
 
         taskIC ? (
             aList.complete.push(liTask), 
-            aList.incomplete = aList.incomplete.filter(tasks => tasks !== liTask)):(
+            aList.incomplete = aList.incomplete.filter(tasks => tasks !== liTask)
+        ):(
             aList.incomplete.push(liTask),
             aList.complete = aList.complete.filter(tasks => tasks !== liTask)
         ) 
