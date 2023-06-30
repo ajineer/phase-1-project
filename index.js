@@ -1,10 +1,12 @@
 function initialized(){
     
+    // "Global" variables for all the todo lists, current list and some dom elements
     let Lists
     let currentlist
     let incompleteList = document.querySelector("#incomplete-items")
     let completeList = document.querySelector("#complete-items")
 
+    // start with fetching the todo lists from db.json
     fetch("http://localhost:3000/Lists")
     .then(res => res.json())
     .then(data => {
@@ -17,6 +19,7 @@ function initialized(){
         createNewItem()
     })
 
+    // function adds new item to to incomplete task list
     function createNewItem(){
         document.querySelector("#new-item-form").addEventListener("submit", (e)=>{
             e.preventDefault()
@@ -31,6 +34,7 @@ function initialized(){
         })
     }
 
+    // function creates new todo list
     function createNewList(){
         document.querySelector("#new-list-form").addEventListener("submit", (e)=>{
             e.preventDefault()
@@ -59,6 +63,7 @@ function initialized(){
         })
     }
 
+    // update json data base with updated tasks list
     function patchTasks(aList, taskList){
     
         fetch(`http://localhost:3000/Lists/${aList.id}`, {
@@ -76,6 +81,8 @@ function initialized(){
         })
     }
 
+    // load every todo list in lists column
+    // and add event listener to each one
     function loadLists(aList){
 
         let toDoLists = document.querySelector("#lists")
@@ -87,6 +94,8 @@ function initialized(){
         })
     }
 
+    // loads the tasks from the current list selected
+    // and adds event listeners to the tasks in both columns
     function loadListDetail(aList){
         
         currentlist = aList
@@ -102,6 +111,7 @@ function initialized(){
         addEventListeners(tasksLi, currentlist)
     }
 
+    // adds event listeners to the edit, delete, and check buttons
     function addEventListeners(aTaskList, aList){
         
         aTaskList.forEach(taskList =>{
@@ -167,6 +177,7 @@ function initialized(){
         })
     }
 
+    // deletes task from the incomplete or complete list
     function deleteTask(text, aList, isIC){
         isIC ?(
             aList.incomplete = aList.incomplete.filter(task => task !== text)
@@ -176,6 +187,7 @@ function initialized(){
         return [aList.incomplete, aList.complete]
     }
 
+    // appends edited task to the incomplete/complete list
     function editTask(aList, currentText, event, isIC){
 
         isIC ? (
@@ -188,6 +200,7 @@ function initialized(){
         return [aList.incomplete, aList.complete]
     }
 
+    // moves incomplete task to complete or vise versa
     function updateTasks(liTask, aList, taskIC){
 
         taskIC ? (
@@ -199,6 +212,7 @@ function initialized(){
         return [aList.incomplete, aList.complete]
     }
 
+    // creates todo task for the DOM
     function createListItem(appendText){
         
         let theItem = document.createElement("li")
@@ -216,6 +230,7 @@ function initialized(){
         return theItem
     }
 
+    // creates new list for the lists DOM
     function createListsItem(listName){
 
         let listsItem = document.createElement("li")
@@ -227,6 +242,7 @@ function initialized(){
         return listsItem
     }
 
+    // renders all todo's of current list selected to the DOM
     function renderTasks(domIncompleteTasks, domcompletedTasks){
         
         domIncompleteTasks.forEach(icTask =>{
@@ -237,6 +253,7 @@ function initialized(){
         })
     }
 
+    // resets the todo's evertytime a different list is selected
     function deleteListDetails(){
 
         let listName = document.querySelector("#name")
@@ -248,4 +265,5 @@ function initialized(){
 
 }
 
+//runs entire program when html is finished loading
 document.addEventListener("DOMContentLoaded", initialized())
