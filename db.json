@@ -4,8 +4,8 @@
       "id": 1,
       "name": "chores",
       "incomplete": [
-        "take out trash",
-        "do dishes"
+        "do dishes",
+        "take out trash"
       ],
       "complete": []
     },
@@ -34,9 +34,9 @@
       "id": 4,
       "name": "personal growth",
       "incomplete": [
-        "read 12 rules for life by Jordan Peterson",
         "stretch for 10 min",
-        "meditate for 30 min everyday"
+        "meditate for 30 min everyday",
+        "read 12 rules for life by Jordan Peterson"
       ],
       "complete": []
     },

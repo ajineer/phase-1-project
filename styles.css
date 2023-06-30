@@ -53,14 +53,15 @@ h1{
     padding: .5rem;
     border: solid black .1rem;
 }
-#toDoLists h2{
+#toDoLists #Lists-title{
     max-width: fit-content;
     padding-left: 1rem;
     padding-right: 1rem;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 0;
+    margin-bottom: -.2rem;
+    margin-top: .5rem;
 }
 #lists{
     padding-left: 0;
@@ -75,7 +76,7 @@ h1{
     border-bottom: solid #7E9CA8 .1rem;
 }
 
-#lists li div{
+#lists li button{
     margin-left: auto;
 }
 
@@ -113,6 +114,7 @@ h1{
     margin-left: auto;
     margin-right: auto; 
     text-align: center;
+    margin-top: .5rem;
 }
 #task-list{
     display: flex;

@@ -92,8 +92,22 @@ function initialized(){
         listItem.addEventListener("click", (e)=>{
             loadListDetail(aList)
         })
+        listItem.querySelector("button").addEventListener("click", ()=>{
+            deleteThisList(aList)
+            listItem.remove()
+        })
     }
 
+    function deleteThisList(aList){
+        fetch(`http://localhost:3000/Lists/${aList.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        })
+
+    }
     // loads the tasks from the current list selected
     // and adds event listeners to the tasks in both columns
     function loadListDetail(aList){
@@ -240,9 +254,14 @@ function initialized(){
 
         let listsItem = document.createElement("li")
         let listsSpan = document.createElement("span")
+        let listDelete = document.createElement("button")
 
+
+        listDelete.innerHTML = "<i>&#10005;</i>"
+        listDelete.id = "deleteListBtn"
         listsSpan.innerText = listName
         listsItem.append(listsSpan)
+        listsItem.append(listDelete)
         
         return listsItem
     }
