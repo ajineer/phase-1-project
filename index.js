@@ -23,12 +23,12 @@ function initialized(){
     function createNewItem(){
         document.querySelector("#new-item-form").addEventListener("submit", (e)=>{
             e.preventDefault()
-            if(e.target[0].value !==""){
+            if(e.target[0].value === "" || currentlist.id===''){
+                alert("Invalid task name or no list found")
+            }else{
                 currentlist.incomplete.push(e.target[0].value)
                 patchTasks(currentlist, [currentlist.incomplete, currentlist.complete])
                 loadListDetail(currentlist)
-            }else{
-                alert("Please enter a new task!")
             } 
             e.target.reset()
         })
