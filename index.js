@@ -14,7 +14,7 @@ function initialized(){
         Lists.forEach(list => {
             loadLists(list)
         })    
-        loadListDetail(Lists[0])
+        loadListDetail(Lists[0]?Lists[0]:{id:'', name:'', incomplete:[], complete:[]})
         createNewList()
         createNewItem()
     })
@@ -95,6 +95,7 @@ function initialized(){
         listItem.querySelector("button").addEventListener("click", ()=>{
             deleteThisList(aList)
             listItem.remove()
+            deleteListDetails()
         })
     }
 
@@ -105,19 +106,21 @@ function initialized(){
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             }
+        }).then(()=>{
+            Lists = Lists.filter(l => l.id !== aList.id)
+            loadListDetail(Lists[0]?Lists[0]:{id:'', name:'', incomplete:[], complete:[]})
         })
-
     }
     // loads the tasks from the current list selected
     // and adds event listeners to the tasks in both columns
     function loadListDetail(aList){
         
         currentlist = aList
-        let tasksLi = [currentlist.incomplete.map(icTask =>{
+        let tasksLi = [currentlist?currentlist.incomplete.map(icTask =>{
                 return createListItem(icTask)
-            }), currentlist.complete.map(cTask =>{
+            }):[], currentlist?currentlist.complete.map(cTask =>{
                 return createListItem(cTask)
-            })]
+            }):[]]
         
         deleteListDetails()
         document.querySelector("#name").innerText = aList.name
@@ -162,10 +165,6 @@ function initialized(){
                     }
                 })
                 
-
-                //* *********************************************************************** *//
-                //* *********************************************************************** *//
-                //* *********************************************************************** *//
                 editButton.addEventListener("click", ()=>{
 
                     let textSpan = li.querySelector("span")
