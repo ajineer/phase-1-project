@@ -1,3 +1,25 @@
 {
-  "Lists": []
+  "Lists": [
+    {
+      "id": 1,
+      "name": "Chores",
+      "incomplete": [
+        "Sweep floors",
+        "Do dishes"
+      ],
+      "complete": []
+    },
+    {
+      "id": 2,
+      "name": "School",
+      "incomplete": [],
+      "complete": []
+    },
+    {
+      "id": 3,
+      "name": "Workout",
+      "incomplete": [],
+      "complete": []
+    }
+  ]
 }
