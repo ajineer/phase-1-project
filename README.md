@@ -32,7 +32,7 @@ This web application is built using JavaScript and interacts with a JSON server 
 
 ## Demo
 
-[![Watch the video](https://www.youtube.com/watch?v=DqRZbit4Yfw&t=1s)]
+[![Watch the video](/TaskMasterImage.png)(https://www.youtube.com/watch?v=DqRZbit4Yfw&t=1s)]
 
 ## Usage
 
