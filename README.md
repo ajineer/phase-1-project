@@ -45,5 +45,3 @@ This web application is built using JavaScript and interacts with a JSON server 
 7. To edit a task, click the edit icon next to the task name, make your changes, and press Enter.
 8. To delete a task, click the delete icon next to the task name.
 9. To delete an entire to-do list, click the "X" icon next to the list name.
-
-[#Features]: #features
